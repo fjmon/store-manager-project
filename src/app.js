@@ -24,4 +24,10 @@ app.get('/products/:id', async (req, res) => {
   res.status(200).json(result);
 });
 
+app.post('/products', async (req, res) => {
+  const name = req.body;
+  const result = await products.addProduct(name);
+  res.status(201).json(result);
+});
+
 module.exports = app;
