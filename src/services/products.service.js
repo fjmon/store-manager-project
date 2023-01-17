@@ -13,9 +13,16 @@ const addProd = async (name) => {
   const result = await products.addProd(name);
   return { type: null, message: result };
 };
+const delProd = async (id) => {
+  const idProd = await products.getAllId(id);
+  if (!idProd) return { type: 404, message: 'Product not found' };
+  await products.delProd(id);
+  return { type: null };
+};
 
 module.exports = {
   getAllProd,
   getAllId,
   addProd,
+  delProd,
 };

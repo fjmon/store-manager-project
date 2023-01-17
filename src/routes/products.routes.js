@@ -6,6 +6,8 @@ const middlewares = require('../middlewares/validador');
 
 productsRouter.get('/', productsController.getAllProd);
 productsRouter.get('/:id', productsController.getAllId);
-productsRouter.post('/', middlewares.valNameProd, productsController.addProd);
+productsRouter.post('/', middlewares.valNameProd,
+  productsController.addProd);
+productsRouter.delete('/:id', productsController.delProd);
 
 module.exports = productsRouter;

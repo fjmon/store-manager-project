@@ -20,9 +20,16 @@ const addProd = async (req, res) => {
   }
   return res.status(201).json(message);
 };
+const delProd = async (req, res) => {
+  const { id } = req.params;
+  const { type } = await productService.delProd(id);
+  if (type) return res.status(type).json({ message: 'Product not found' });
+  return res.sendStatus(204);
+};
 
 module.exports = {
   getAllProd,
   getAllId,
   addProd,
+  delProd,
 };
