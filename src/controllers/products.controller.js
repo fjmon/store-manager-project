@@ -20,6 +20,17 @@ const addProd = async (req, res) => {
   }
   return res.status(201).json(message);
 };
+
+const upProd = async (req, res) => {
+  const update = req.body;
+  const { id } = req.params;
+  const { type, message } = await productService.upProd(id, update);
+  if (type) {
+    return res.status(type).json({ message });
+  }
+  return res.status(200).json(message);
+};
+
 const delProd = async (req, res) => {
   const { id } = req.params;
   const { type } = await productService.delProd(id);
@@ -31,5 +42,6 @@ module.exports = {
   getAllProd,
   getAllId,
   addProd,
+  upProd,
   delProd,
 };
