@@ -1,4 +1,4 @@
-const existId = require('../models/products.model');
+const haId = require('../models/products.model');
 
 const valNameProd = (req, res, next) => {
   const { name } = req.body;
@@ -23,7 +23,7 @@ const valSale = (req, res, next) => {
 };
 const valProdId = async (req, res, next) => {
   const productId = req.body;
-  const exist = await existId.getAllProd();
+  const exist = await haId.getAllProd();
   const extractId = exist.map((ex) => ex.id);
   const hasProductId = productId.every((product) => extractId.includes(product.productId));
   if (!hasProductId) return res.status(404).json({ message: 'Product not found' });
